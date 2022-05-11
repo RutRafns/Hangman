@@ -7,7 +7,8 @@ void main() {
 
 class Hangman extends StatelessWidget {
   @override
+  //Changing Theme to custom one later, still planning colorscheme
   Widget build(BuildContext context) {
-    return MaterialApp(home: WelcomePage());
+    return MaterialApp(theme: ThemeData.dark(), home: WelcomePage());
   }
 }

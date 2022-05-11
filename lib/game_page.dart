@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:hangman/welcome_page.dart';
 
 class GamePage extends StatelessWidget {
   GamePage();
@@ -9,6 +11,11 @@ class GamePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('HANGMAN'),
       ),
-    );
+      body: Center(
+       ),
+    ),}
+        );
+
+
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'game_page.dart';
+
 class WelcomePage extends StatefulWidget {
   @override
   _WelcomePage createState() => _WelcomePage();
@@ -11,6 +13,20 @@ class _WelcomePage extends State<WelcomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('HANGMAN'),
+      ),
+      body: Center(
+        //Plan on changing button look
+        child: ElevatedButton(
+          child: const Text('Advance'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => GamePage(),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
