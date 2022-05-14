@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:hangman/welcome_page.dart';
+import 'alphabet_box.dart';
 
 class GamePage extends StatelessWidget {
   GamePage();
@@ -12,10 +11,8 @@ class GamePage extends StatelessWidget {
         title: Text('HANGMAN'),
       ),
       body: Center(
-       ),
-    ),}
-        );
-
-
+        child: AlphabetCard(),
+      ),
+    );
   }
 }
