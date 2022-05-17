@@ -15,16 +15,14 @@ class _WelcomePage extends State<WelcomePage> {
         title: Text('HANGMAN'),
       ),
       body: Center(
-        //Plan on changing button look
+        child: Image.asset('images/image7.png', fit: BoxFit.cover),
+      ),
+      bottomNavigationBar: BottomAppBar(
         child: ElevatedButton(
-          child: const Text('Advance'),
+          child: const Text('Let\'s play!'),
           onPressed: () {
             Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => GamePage(),
-              ),
-            );
+                context, MaterialPageRoute(builder: (context) => GamePage()));
           },
         ),
       ),

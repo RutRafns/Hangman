@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 class AlphabetCard extends StatelessWidget {
-  AlphabetCard({@required this.letter, this.onPress});
+  AlphabetCard(this.onPress);
 
-  final Function onPress;
-  final String letter;
+  final VoidCallback onPress;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPress,
-      child: Container(child: Text(letter)),
+      child: Container(
+        alignment: Alignment.center,
+      ),
     );
   }
 }

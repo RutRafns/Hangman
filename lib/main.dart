@@ -12,3 +12,30 @@ class Hangman extends StatelessWidget {
     return MaterialApp(theme: ThemeData.dark(), home: WelcomePage());
   }
 }
+
+List<String> alphabet = [
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'X',
+  'Y',
+  'Z'
+];

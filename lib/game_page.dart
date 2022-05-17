@@ -5,13 +5,18 @@ class GamePage extends StatelessWidget {
   GamePage();
 
   @override
-  Widget build(BuildContext Context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('HANGMAN'),
       ),
-      body: Center(
-        child: AlphabetCard(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Expanded(
+            child: AlphabetCard(),
+          ),
+        ],
       ),
     );
   }
