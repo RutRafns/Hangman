@@ -10,14 +10,14 @@ class GamePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('HANGMAN'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            child: AlphabetCard(),
-          ),
-        ],
-      ),
+      // body: Column(
+      //   crossAxisAlignment: CrossAxisAlignment.stretch,
+      //   children: <Widget>[
+      //     Expanded(
+      //       child: AlphabetCard(),
+      //     ),
+      //   ],
+      // ),
     );
   }
 }
