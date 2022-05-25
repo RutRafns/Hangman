@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+
+String word = 'insanity'.toUpperCase();
+
 const List<String> alphabet = [
   'A',
   'B',
@@ -7,6 +11,7 @@ const List<String> alphabet = [
   'F',
   'G',
   'H',
+  'I',
   'J',
   'K',
   'L',
@@ -22,7 +27,7 @@ const List<String> alphabet = [
   'V',
   'X',
   'Y',
-  'Z'
+  'Z',
 ];
 
 const List<String> hangmanImages = [

@@ -23,7 +23,7 @@ class _WelcomePage extends State<WelcomePage> {
           style: ElevatedButton.styleFrom(primary: Colors.purple),
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => GamePage()));
+                context, MaterialPageRoute(builder: (context) => Game()));
           },
         ),
       ),
