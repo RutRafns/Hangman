@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import 'game_page.dart';
@@ -15,12 +17,12 @@ class _WelcomePage extends State<WelcomePage> {
         title: Text('HANGMAN'),
       ),
       body: Center(
-        child: Image.asset('images/image7.png', fit: BoxFit.cover),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: ElevatedButton(
-          child: const Text('Let\'s play!'),
-          style: ElevatedButton.styleFrom(primary: Colors.purple),
+        child: TextButton(
+          child: const Text(
+            'Let\'s play!',
+            textScaleFactor: 5.0,
+            style: TextStyle(color: Colors.amberAccent),
+          ),
           onPressed: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Game()));
@@ -28,5 +30,16 @@ class _WelcomePage extends State<WelcomePage> {
         ),
       ),
     );
+    //   bottomNavigationBar: BottomAppBar(
+    //     child: ElevatedButton(
+    //       child: const Text('Let\'s play!'),
+    //       style: ElevatedButton.styleFrom(primary: Colors.purple),
+    //       onPressed: () {
+    //         Navigator.push(
+    //             context, MaterialPageRoute(builder: (context) => Game()));
+    //       },
+    //     ),
+    //   ),
+    // );
   }
 }

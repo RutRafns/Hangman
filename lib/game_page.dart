@@ -3,11 +3,25 @@ import 'supplementary/constants.dart';
 import 'supplementary/letter_box.dart';
 import 'supplementary/word_list.dart';
 import 'main.dart';
+import 'package:english_words/english_words.dart';
 
 class Game extends StatefulWidget {
   @override
   _GamePage createState() => _GamePage();
 }
+
+String word = 'Hello'.toUpperCase();
+
+class Check {
+  //adding the number of tries
+  static List<String> correctLetters = [];
+  static List<String> wrongLetters = [];
+  static int tries = 1;
+  static List<String> selectedChar = [];
+}
+
+// int tries = 0;
+// List<String> selectedChar = [];
 
 class _GamePage extends State<Game> {
   @override
@@ -22,23 +36,25 @@ class _GamePage extends State<Game> {
             child: Stack(
               //stack that keeps the hangman pictures and swaps them depending on tries.
               children: [
-                hangmanState(Check.tries == 0, "images/image1.png"),
-                hangmanState(Check.tries >= 1, "images/image2.png"),
-                hangmanState(Check.tries >= 2, "images/image3.png"),
-                hangmanState(Check.tries >= 3, "images/image4.png"),
-                hangmanState(Check.tries >= 4, "images/image5.png"),
-                hangmanState(Check.tries >= 5, "images/image6.png"),
-                hangmanState(Check.tries >= 6, "images/image7.png"),
+                hangmanState(Check.tries == 1, "images/image1.png"),
+                hangmanState(Check.tries == 2, "images/image2.png"),
+                hangmanState(Check.tries == 3, "images/image3.png"),
+                hangmanState(Check.tries == 4, "images/image4.png"),
+                hangmanState(Check.tries == 5, "images/image5.png"),
+                hangmanState(Check.tries == 6, "images/image6.png"),
+                hangmanState(Check.tries == 7, "images/image7.png"),
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: word
-                .split('')
-                .map((e) => letter(e.toUpperCase(),
-                    !Check.selectedChar.contains(e.toUpperCase())))
-                .toList(),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: testWord
+                  .split('')
+                  .map((e) => letter(e.toUpperCase(),
+                      !Check.selectedChar.contains(e.toUpperCase())))
+                  .toList(),
+            ),
           ),
           SizedBox(
             //Keyboard for clicking letters for guessing
@@ -58,7 +74,8 @@ class _GamePage extends State<Game> {
                             Check.selectedChar.add(e);
                             print(Check.selectedChar);
                             print(Check.tries);
-                            if (!word.split('').contains(e.toUpperCase())) {
+
+                            if (!testWord.split('').contains(e.toUpperCase())) {
                               Check.tries++;
                             }
                           });
@@ -75,8 +92,8 @@ class _GamePage extends State<Game> {
                     ),
                   ),
                   fillColor: Check.selectedChar.contains(e)
-                      ? Colors.black87
-                      : Colors.blue,
+                      ? Colors.black45
+                      : Colors.amberAccent,
                 );
               }).toList(),
             ),
@@ -89,37 +106,34 @@ class _GamePage extends State<Game> {
 
 Widget hangmanState(bool visible, String path) {
   return Visibility(
-      visible: visible,
-      child: Container(
-        width: 250,
-        height: 250,
-        child: Image.asset(path),
-      ));
-}
-
-class Check {
-  //adding the number of tries
-
-  static int tries = 0;
-  static List<String> selectedChar = [];
+    visible: visible,
+    child: Container(
+      width: 250,
+      // height: 250,
+      child: Image.asset(path),
+    ),
+  );
 }
 
 Widget letter(String character, bool hidden) {
-  return Container(
-    height: 65,
-    width: 50,
-    padding: EdgeInsets.all(12.0),
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(4.0),
-    ),
-    child: Visibility(
-      visible: !hidden,
-      child: Text(
-        character,
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 40.0,
+  return Expanded(
+    child: Container(
+      // height: 80,
+      // width: 50,
+      padding: EdgeInsets.all(10.0),
+      decoration: BoxDecoration(
+        color: Colors.amberAccent,
+        borderRadius: BorderRadius.circular(5.5),
+      ),
+      child: Visibility(
+        visible: !hidden,
+        child: Text(
+          character,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 40.0,
+          ),
         ),
       ),
     ),

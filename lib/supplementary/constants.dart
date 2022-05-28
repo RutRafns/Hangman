@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-String word = 'insanity'.toUpperCase();
+import 'word_list.dart';
+import 'package:english_words/english_words.dart';
+import 'dart:math';
 
 const List<String> alphabet = [
   'A',
@@ -25,6 +26,7 @@ const List<String> alphabet = [
   'T',
   'U',
   'V',
+  'W',
   'X',
   'Y',
   'Z',

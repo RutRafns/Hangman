@@ -12,9 +12,9 @@ class Hangman extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
         appBarTheme: AppBarTheme(
-          backgroundColor: Color(0xff510b47),
+          backgroundColor: Colors.amber,
         ),
-        scaffoldBackgroundColor: Color(0xff51380b),
+        scaffoldBackgroundColor: Colors.white38,
       ),
       home: WelcomePage(),
     );
