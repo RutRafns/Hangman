@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'supplementary/constants.dart';
 import 'supplementary/letter_box.dart';
 import 'supplementary/word_list.dart';
+import 'dart:math';
 import 'main.dart';
-import 'package:english_words/english_words.dart';
 
 class Game extends StatefulWidget {
   @override
   _GamePage createState() => _GamePage();
 }
 
-String word = 'Hello'.toUpperCase();
+// String word = 'Hello'.toUpperCase();
 
 class Check {
   //adding the number of tries
-  static List<String> correctLetters = [];
-  static List<String> wrongLetters = [];
+  // static List<String> correctLetters = [];
+  // static List<String> wrongLetters = [];
   static int tries = 1;
   static List<String> selectedChar = [];
 }
@@ -49,7 +49,7 @@ class _GamePage extends State<Game> {
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: testWord
+              children: usedWord
                   .split('')
                   .map((e) => letter(e.toUpperCase(),
                       !Check.selectedChar.contains(e.toUpperCase())))
@@ -75,8 +75,38 @@ class _GamePage extends State<Game> {
                             print(Check.selectedChar);
                             print(Check.tries);
 
-                            if (!testWord.split('').contains(e.toUpperCase())) {
+                            if (!usedWord.split('').contains(e.toUpperCase())) {
                               Check.tries++;
+                              if (Check.tries == 8) {
+                                print('YOU SUCK');
+                              }
+                              ;
+                            } else {
+                              var wordAsList = usedWord.split('');
+                              var gameWon = true;
+                              for (var letter in wordAsList) {
+                                print(letter);
+                                if (!Check.selectedChar.contains(letter)) {
+                                  print('uhoh');
+                                  gameWon = false;
+                                }
+                              }
+                              if (gameWon == true) {
+                                print('game won!"');
+                                SimpleDialog(
+                                  title: const Text('You/ve won, YAY!'),
+                                  children: <Widget>[
+                                    SimpleDialogOption(
+                                      onPressed: () {},
+                                      child: const Text('Play agin?'),
+                                    ),
+                                    SimpleDialogOption(
+                                      onPressed: () {},
+                                      child: const Text('Quit'),
+                                    ),
+                                  ],
+                                );
+                              }
                             }
                           });
                         },

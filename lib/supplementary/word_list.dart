@@ -6,7 +6,6 @@ var hangmanWords = [
   'quizzes',
   'jokes',
   'embezzle',
-  'espionage',
   'jazz',
   'wheezy',
   'fixable',
@@ -22,18 +21,12 @@ var hangmanWords = [
   'faking',
   'swivel',
   'zigzag',
-  'nowadays',
-  'buzzwords',
   'mystify',
   'stymied',
   'jelly',
   'voodoo',
-  'mnemonic',
   'myth',
-  'razzmatazz',
-  'witchcraft',
   'fjord',
-  'wellspring',
   'vodka',
   'quiz',
   'kilobyte',
@@ -43,7 +36,6 @@ var hangmanWords = [
   'blizzard',
   'curacao',
   'woozy',
-  'pneumonia',
   'zit',
   'glowworm',
   'strengths',
@@ -59,5 +51,5 @@ final _random = new Random();
 
 // generate a random index based on the list length
 // and use it to retrieve the element
-var usedWord = hangmanWords[_random.nextInt(hangmanWords.length)];
+var usedWord = hangmanWords[_random.nextInt(hangmanWords.length)].toUpperCase();
 var testWord = adjectives[_random.nextInt(adjectives.length)];
