@@ -8,9 +8,12 @@ class Game extends StatefulWidget {
 }
 
 class Check {
-  //adding the number of tries
+  //Changes to 1 when win condition is met.
+  static int win = 0;
+  //adding the number of tries,
 
   static int tries = 1;
+  //adds picked characters to list to later compare with word.
   static List<String> selectedChar = [];
 }
 
@@ -27,17 +30,22 @@ class _GamePage extends State<Game> {
             child: Stack(
               //stack that keeps the hangman pictures and swaps them depending on tries.
               children: [
-                hangmanState(Check.tries == 1, "images/image1.png"),
-                hangmanState(Check.tries == 2, "images/image2.png"),
-                hangmanState(Check.tries == 3, "images/image3.png"),
-                hangmanState(Check.tries == 4, "images/image4.png"),
-                hangmanState(Check.tries == 5, "images/image5.png"),
-                hangmanState(Check.tries == 6, "images/image6.png"),
-                hangmanState(Check.tries == 7, "images/image7.png"),
+                hangmanState(
+                    Check.win == 1, 'images/imageWin.png'), //Winning image
+                hangmanState(Check.tries == 1, 'images/image1.png'),
+                hangmanState(Check.tries == 2, 'images/image2.png'),
+                hangmanState(Check.tries == 3, 'images/image3.png'),
+                hangmanState(Check.tries == 4, 'images/image4.png'),
+                hangmanState(Check.tries == 5, 'images/image5.png'),
+                hangmanState(Check.tries == 6, 'images/image6.png'),
+                hangmanState(Check.tries == 7, 'images/image7.png'),
+                hangmanState(
+                    Check.tries == 8, 'images/imageLoser.png') //Loss image
               ],
             ),
           ),
           Expanded(
+            //set's up word for guessing, pulling word from word_list.
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: usedWord
@@ -69,28 +77,6 @@ class _GamePage extends State<Game> {
                             if (!usedWord.split('').contains(e.toUpperCase())) {
                               Check.tries++;
                               if (Check.tries == 8) {
-                                Widget build(BuildContext context) {
-                                  return AlertDialog(
-                                    title: const Text('You won!'),
-                                    content: SingleChildScrollView(
-                                      child: ListBody(
-                                        children: const <Widget>[
-                                          Text('You did so well.'),
-                                          Text(
-                                              'Would you like to return to the start screen?'),
-                                        ],
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      TextButton(
-                                          child: const Text('Leave'),
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          })
-                                    ],
-                                  );
-                                }
-
                                 print('YOU SUCK');
                               }
                               ;
@@ -100,26 +86,13 @@ class _GamePage extends State<Game> {
                               for (var letter in wordAsList) {
                                 print(letter);
                                 if (!Check.selectedChar.contains(letter)) {
-                                  print('uhoh');
                                   gameWon = false;
                                 }
                               }
-                              if (gameWon == true) {}
-                              //   return
-                              //       // print('game won!"');
-                              //       SimpleDialog(
-                              //     title: const Text('You/ve won, YAY!'),
-                              //     children: <Widget>[
-                              //       SimpleDialogOption(
-                              //         onPressed: () {},
-                              //         child: const Text('Play agin?'),
-                              //       ),
-                              //       SimpleDialogOption(
-                              //         onPressed: () {},
-                              //         child: const Text('Quit'),
-                              //       ),
-                              //     ],
-                              //   );
+                              if (gameWon == true) {
+                                Check.win++;
+                                print('winner');
+                              }
                             }
                           });
                         },
@@ -160,7 +133,7 @@ Widget hangmanState(bool visible, String path) {
 Widget letter(String character, bool hidden) {
   return Expanded(
     child: Container(
-      padding: EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(7.0),
       decoration: BoxDecoration(
         color: Colors.amberAccent,
         borderRadius: BorderRadius.circular(5.5),
@@ -169,10 +142,11 @@ Widget letter(String character, bool hidden) {
         visible: !hidden,
         child: Text(
           character,
+          textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 40.0,
+            fontSize: 35.0,
           ),
         ),
       ),
