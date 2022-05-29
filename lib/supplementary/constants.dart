@@ -1,8 +1,3 @@
-import 'package:flutter/material.dart';
-import 'word_list.dart';
-import 'package:english_words/english_words.dart';
-import 'dart:math';
-
 const List<String> alphabet = [
   'A',
   'B',

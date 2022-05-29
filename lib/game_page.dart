@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
 import 'supplementary/constants.dart';
-import 'supplementary/letter_box.dart';
 import 'supplementary/word_list.dart';
-import 'dart:math';
-import 'main.dart';
 
 class Game extends StatefulWidget {
   @override
   _GamePage createState() => _GamePage();
 }
 
-// String word = 'Hello'.toUpperCase();
-
 class Check {
   //adding the number of tries
-  // static List<String> correctLetters = [];
-  // static List<String> wrongLetters = [];
+
   static int tries = 1;
   static List<String> selectedChar = [];
 }
-
-// int tries = 0;
-// List<String> selectedChar = [];
 
 class _GamePage extends State<Game> {
   @override
@@ -78,6 +69,28 @@ class _GamePage extends State<Game> {
                             if (!usedWord.split('').contains(e.toUpperCase())) {
                               Check.tries++;
                               if (Check.tries == 8) {
+                                Widget build(BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text('You won!'),
+                                    content: SingleChildScrollView(
+                                      child: ListBody(
+                                        children: const <Widget>[
+                                          Text('You did so well.'),
+                                          Text(
+                                              'Would you like to return to the start screen?'),
+                                        ],
+                                      ),
+                                    ),
+                                    actions: <Widget>[
+                                      TextButton(
+                                          child: const Text('Leave'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          })
+                                    ],
+                                  );
+                                }
+
                                 print('YOU SUCK');
                               }
                               ;
@@ -91,22 +104,22 @@ class _GamePage extends State<Game> {
                                   gameWon = false;
                                 }
                               }
-                              if (gameWon == true) {
-                                print('game won!"');
-                                SimpleDialog(
-                                  title: const Text('You/ve won, YAY!'),
-                                  children: <Widget>[
-                                    SimpleDialogOption(
-                                      onPressed: () {},
-                                      child: const Text('Play agin?'),
-                                    ),
-                                    SimpleDialogOption(
-                                      onPressed: () {},
-                                      child: const Text('Quit'),
-                                    ),
-                                  ],
-                                );
-                              }
+                              if (gameWon == true) {}
+                              //   return
+                              //       // print('game won!"');
+                              //       SimpleDialog(
+                              //     title: const Text('You/ve won, YAY!'),
+                              //     children: <Widget>[
+                              //       SimpleDialogOption(
+                              //         onPressed: () {},
+                              //         child: const Text('Play agin?'),
+                              //       ),
+                              //       SimpleDialogOption(
+                              //         onPressed: () {},
+                              //         child: const Text('Quit'),
+                              //       ),
+                              //     ],
+                              //   );
                             }
                           });
                         },
@@ -139,7 +152,6 @@ Widget hangmanState(bool visible, String path) {
     visible: visible,
     child: Container(
       width: 250,
-      // height: 250,
       child: Image.asset(path),
     ),
   );
@@ -148,8 +160,6 @@ Widget hangmanState(bool visible, String path) {
 Widget letter(String character, bool hidden) {
   return Expanded(
     child: Container(
-      // height: 80,
-      // width: 50,
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         color: Colors.amberAccent,
